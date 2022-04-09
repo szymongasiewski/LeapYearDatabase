@@ -1,0 +1,24 @@
+﻿@page
+@model LeapYearDatabase.Pages.RecentlySearchedModel
+@{
+    ViewData["Title"] = "Recently searched";
+}
+<h1 class="display-4">Ostatnio szukane</h1>
+@if(Model.LeapYears != null) {
+    <form method="post">
+        <ul class="list-group list-group-flush">
+            @foreach(var l in Model.LeapYears)
+            {
+                <li class="list-group-items">
+                    <span>
+                        @l.Date @l.Name @l.Surname, @l.Year był rokiem @l.IsLeapYear(l.Year) przestępnym.
+                    </span>
+                    <input class="btn-primary btn-danger" style="float: right" type="submit" asp-page-handler="DeleteRecord" asp-route-RecordId="@l.Id" value="Usuń" />
+                </li>
+            }
+        </ul>
+    </form>
+}
+else {
+    <p>Brak wyników.</p>
+}

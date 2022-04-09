@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="LeapYear.Year"></label>
+            <input asp-for="LeapYear.Year" class="form-control"><br />
+        </div>
+        <div><span style="font-weight: bold !important" asp-validation-for="LeapYear.Year" class="text-danger"></span></div>
+        <div class="form-group">
+            <label asp-for="LeapYear.Name"></label>
+            <input asp-for="LeapYear.Name" class="form-control"><br />
+        </div>
+        <div><span style="font-weight: bold" asp-validation-for="LeapYear.Surname" class="text-danger"></span></div>
+         <div class="form-group">
+            <label asp-for="LeapYear.Surname"></label>
+            <input asp-for="LeapYear.Surname" class="form-control"><br />
+        </div>
+        <div><span style="font-weight: bold" asp-validation-for="LeapYear.Surname" class="text-danger"></span></div>
+        <button type="submit" class="btn btn-primary">Zatwierdż</button>
+    </form>
+    @if(Model.Arr != null) {
+        <div class="alert alert-info">
+            @Model.Arr[0] @Model.Arr[1] urodził/a się w @Model.Arr[2] roku. To @Model.Arr[3] był rok przestępny.
+        </div>
+    }
+</div>
